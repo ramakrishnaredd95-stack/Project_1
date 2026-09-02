@@ -135,17 +135,8 @@ jobs:
 
 
       # --------------------------------------------------------
-      # Azure Login
-      # Uses Azure subscription credentials
-      # --------------------------------------------------------
-      - name: Azure Login
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-
-      # --------------------------------------------------------
       # Setup Terraform
+      # ARM_* env vars handle authentication (no Azure CLI needed)
       # --------------------------------------------------------
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3

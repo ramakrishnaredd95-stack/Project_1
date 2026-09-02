@@ -13,11 +13,13 @@ terraform {
     storage_account_name = "azstoragecontainer"
     container_name       = "tfstate"
     key                  = "aks.terraform"
-
+    use_cli = false
   }
 }
 
 provider "azurerm" {
   features {}
   subscription_id = "16d60876-2016-4013-9895-cc00224e539c"
-}   
+  use_cli         = false
+}
+   
