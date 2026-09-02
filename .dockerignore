@@ -1,0 +1,6 @@
+.git
+.vs
+**/obj
+terraform/.terraform
+terraform/*.tfstate
+terraform/*.tfstate.*

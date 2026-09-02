@@ -1,0 +1,213 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F22B3D85-D184-4CD3-A0C9-00AFF87A8664}|FlipkartApp.web\\FlipkartApp.web.csproj|c:\\users\\91807\\onedrive\\documents\\azuredevops\\capstone project\\flipkartapp-project\\flipkartapp\\flipkartapp.web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F22B3D85-D184-4CD3-A0C9-00AFF87A8664}|FlipkartApp.web\\FlipkartApp.web.csproj|solutionrelative:flipkartapp.web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F22B3D85-D184-4CD3-A0C9-00AFF87A8664}|FlipkartApp.web\\FlipkartApp.web.csproj|c:\\users\\91807\\onedrive\\documents\\azuredevops\\capstone project\\flipkartapp-project\\flipkartapp\\flipkartapp.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F22B3D85-D184-4CD3-A0C9-00AFF87A8664}|FlipkartApp.web\\FlipkartApp.web.csproj|solutionrelative:flipkartapp.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F22B3D85-D184-4CD3-A0C9-00AFF87A8664}|FlipkartApp.web\\FlipkartApp.web.csproj|c:\\users\\91807\\onedrive\\documents\\azuredevops\\capstone project\\flipkartapp-project\\flipkartapp\\flipkartapp.web\\views\\products\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F22B3D85-D184-4CD3-A0C9-00AFF87A8664}|FlipkartApp.web\\FlipkartApp.web.csproj|solutionrelative:flipkartapp.web\\views\\products\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F22B3D85-D184-4CD3-A0C9-00AFF87A8664}|FlipkartApp.web\\FlipkartApp.web.csproj|c:\\users\\91807\\onedrive\\documents\\azuredevops\\capstone project\\flipkartapp-project\\flipkartapp\\flipkartapp.web\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F22B3D85-D184-4CD3-A0C9-00AFF87A8664}|FlipkartApp.web\\FlipkartApp.web.csproj|solutionrelative:flipkartapp.web\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F22B3D85-D184-4CD3-A0C9-00AFF87A8664}|FlipkartApp.web\\FlipkartApp.web.csproj|c:\\users\\91807\\onedrive\\documents\\azuredevops\\capstone project\\flipkartapp-project\\flipkartapp\\flipkartapp.web\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F22B3D85-D184-4CD3-A0C9-00AFF87A8664}|FlipkartApp.web\\FlipkartApp.web.csproj|solutionrelative:flipkartapp.web\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA8E71F7-B627-4146-A2D6-7C3B531EB33C}|FlipkartApp.business\\FlipkartApp.business.csproj|c:\\users\\91807\\onedrive\\documents\\azuredevops\\capstone project\\flipkartapp-project\\flipkartapp\\flipkartapp.business\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA8E71F7-B627-4146-A2D6-7C3B531EB33C}|FlipkartApp.business\\FlipkartApp.business.csproj|solutionrelative:flipkartapp.business\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48555437-2DDF-4B05-BCAB-4DDCE407ABD0}|FlipkartApp.data\\FlipkartApp.data.csproj|c:\\users\\91807\\onedrive\\documents\\azuredevops\\capstone project\\flipkartapp-project\\flipkartapp\\flipkartapp.data\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48555437-2DDF-4B05-BCAB-4DDCE407ABD0}|FlipkartApp.data\\FlipkartApp.data.csproj|solutionrelative:flipkartapp.data\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48555437-2DDF-4B05-BCAB-4DDCE407ABD0}|FlipkartApp.data\\FlipkartApp.data.csproj|c:\\users\\91807\\onedrive\\documents\\azuredevops\\capstone project\\flipkartapp-project\\flipkartapp\\flipkartapp.data\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48555437-2DDF-4B05-BCAB-4DDCE407ABD0}|FlipkartApp.data\\FlipkartApp.data.csproj|solutionrelative:flipkartapp.data\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA8E71F7-B627-4146-A2D6-7C3B531EB33C}|FlipkartApp.business\\FlipkartApp.business.csproj|c:\\users\\91807\\onedrive\\documents\\azuredevops\\capstone project\\flipkartapp-project\\flipkartapp\\flipkartapp.business\\flipkartapp.business.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{DA8E71F7-B627-4146-A2D6-7C3B531EB33C}|FlipkartApp.business\\FlipkartApp.business.csproj|solutionrelative:flipkartapp.business\\flipkartapp.business.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F22B3D85-D184-4CD3-A0C9-00AFF87A8664}|FlipkartApp.web\\FlipkartApp.web.csproj|c:\\users\\91807\\onedrive\\documents\\azuredevops\\capstone project\\flipkartapp-project\\flipkartapp\\flipkartapp.web\\flipkartapp.web.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F22B3D85-D184-4CD3-A0C9-00AFF87A8664}|FlipkartApp.web\\FlipkartApp.web.csproj|solutionrelative:flipkartapp.web\\flipkartapp.web.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48555437-2DDF-4B05-BCAB-4DDCE407ABD0}|FlipkartApp.data\\FlipkartApp.data.csproj|c:\\users\\91807\\onedrive\\documents\\azuredevops\\capstone project\\flipkartapp-project\\flipkartapp\\flipkartapp.data\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48555437-2DDF-4B05-BCAB-4DDCE407ABD0}|FlipkartApp.data\\FlipkartApp.data.csproj|solutionrelative:flipkartapp.data\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA8E71F7-B627-4146-A2D6-7C3B531EB33C}|FlipkartApp.business\\FlipkartApp.business.csproj|c:\\users\\91807\\onedrive\\documents\\azuredevops\\capstone project\\flipkartapp-project\\flipkartapp\\flipkartapp.business\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA8E71F7-B627-4146-A2D6-7C3B531EB33C}|FlipkartApp.business\\FlipkartApp.business.csproj|solutionrelative:flipkartapp.business\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.web\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "FlipkartApp.web\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.web\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "FlipkartApp.web\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-09T21:04:35.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.web\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "FlipkartApp.web\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.web\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "FlipkartApp.web\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAcwCMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-09T21:02:57.815Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Add.cshtml",
+              "DocumentMoniker": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.web\\Views\\Products\\Add.cshtml",
+              "RelativeDocumentMoniker": "FlipkartApp.web\\Views\\Products\\Add.cshtml",
+              "ToolTip": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.web\\Views\\Products\\Add.cshtml",
+              "RelativeToolTip": "FlipkartApp.web\\Views\\Products\\Add.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-09T20:55:40.314Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.web\\Views\\Products\\Index.cshtml",
+              "RelativeDocumentMoniker": "FlipkartApp.web\\Views\\Products\\Index.cshtml",
+              "ToolTip": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.web\\Views\\Products\\Index.cshtml",
+              "RelativeToolTip": "FlipkartApp.web\\Views\\Products\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-09T20:53:00.057Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.web\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "FlipkartApp.web\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.web\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "FlipkartApp.web\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T20:47:23.053Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.business\\ProductService.cs",
+              "RelativeDocumentMoniker": "FlipkartApp.business\\ProductService.cs",
+              "ToolTip": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.business\\ProductService.cs",
+              "RelativeToolTip": "FlipkartApp.business\\ProductService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T20:45:24.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.data\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "FlipkartApp.data\\ProductRepository.cs",
+              "ToolTip": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.data\\ProductRepository.cs",
+              "RelativeToolTip": "FlipkartApp.data\\ProductRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T20:42:35.779Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.data\\Product.cs",
+              "RelativeDocumentMoniker": "FlipkartApp.data\\Product.cs",
+              "ToolTip": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.data\\Product.cs",
+              "RelativeToolTip": "FlipkartApp.data\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T20:40:34.739Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FlipkartApp.business.csproj",
+              "DocumentMoniker": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.business\\FlipkartApp.business.csproj",
+              "RelativeDocumentMoniker": "FlipkartApp.business\\FlipkartApp.business.csproj",
+              "ToolTip": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.business\\FlipkartApp.business.csproj",
+              "RelativeToolTip": "FlipkartApp.business\\FlipkartApp.business.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-09T20:35:16.568Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FlipkartApp.web.csproj",
+              "DocumentMoniker": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.web\\FlipkartApp.web.csproj",
+              "RelativeDocumentMoniker": "FlipkartApp.web\\FlipkartApp.web.csproj",
+              "ToolTip": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.web\\FlipkartApp.web.csproj",
+              "RelativeToolTip": "FlipkartApp.web\\FlipkartApp.web.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-09T20:33:49.461Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.data\\Class1.cs",
+              "RelativeDocumentMoniker": "FlipkartApp.data\\Class1.cs",
+              "ToolTip": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.data\\Class1.cs",
+              "RelativeToolTip": "FlipkartApp.data\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T20:27:56.119Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.business\\Class1.cs",
+              "RelativeDocumentMoniker": "FlipkartApp.business\\Class1.cs",
+              "ToolTip": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.business\\Class1.cs",
+              "RelativeToolTip": "FlipkartApp.business\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T20:27:07.007Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

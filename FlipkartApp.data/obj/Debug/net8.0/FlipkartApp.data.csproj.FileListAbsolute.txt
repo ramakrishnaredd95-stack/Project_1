@@ -1,0 +1,11 @@
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.data\bin\Debug\net8.0\FlipkartApp.data.deps.json
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.data\bin\Debug\net8.0\FlipkartApp.data.dll
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.data\bin\Debug\net8.0\FlipkartApp.data.pdb
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.data\obj\Debug\net8.0\FlipkartApp.data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.data\obj\Debug\net8.0\FlipkartApp.data.AssemblyInfoInputs.cache
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.data\obj\Debug\net8.0\FlipkartApp.data.AssemblyInfo.cs
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.data\obj\Debug\net8.0\FlipkartApp.data.csproj.CoreCompileInputs.cache
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.data\obj\Debug\net8.0\FlipkartApp.data.dll
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.data\obj\Debug\net8.0\refint\FlipkartApp.data.dll
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.data\obj\Debug\net8.0\FlipkartApp.data.pdb
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.data\obj\Debug\net8.0\ref\FlipkartApp.data.dll

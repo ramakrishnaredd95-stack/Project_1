@@ -1,0 +1,123 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "FlipkartApp.business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "FlipkartApp.data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/FlipkartApp.business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FlipkartApp.business.dll": {}
+        }
+      },
+      "FlipkartApp.data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/FlipkartApp.data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FlipkartApp.data.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FlipkartApp.business/1.0.0": {
+      "type": "project",
+      "path": "../FlipkartApp.business/FlipkartApp.business.csproj",
+      "msbuildProject": "../FlipkartApp.business/FlipkartApp.business.csproj"
+    },
+    "FlipkartApp.data/1.0.0": {
+      "type": "project",
+      "path": "../FlipkartApp.data/FlipkartApp.data.csproj",
+      "msbuildProject": "../FlipkartApp.data/FlipkartApp.data.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "FlipkartApp.business >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\91807\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.web\\FlipkartApp.web.csproj",
+      "projectName": "FlipkartApp.web",
+      "projectPath": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.web\\FlipkartApp.web.csproj",
+      "packagesPath": "C:\\Users\\91807\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.web\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\91807\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.business\\FlipkartApp.business.csproj": {
+              "projectPath": "C:\\Users\\91807\\OneDrive\\Documents\\AzureDevOps\\Capstone project\\FlipkartApp-project\\FlipkartApp\\FlipkartApp.business\\FlipkartApp.business.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "10.0.100"
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.business\bin\Debug\net8.0\FlipkartApp.business.deps.json
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.business\bin\Debug\net8.0\FlipkartApp.business.dll
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.business\bin\Debug\net8.0\FlipkartApp.business.pdb
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.business\bin\Debug\net8.0\FlipkartApp.data.dll
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.business\bin\Debug\net8.0\FlipkartApp.data.pdb
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.business\obj\Debug\net8.0\FlipkartApp.business.csproj.AssemblyReference.cache
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.business\obj\Debug\net8.0\FlipkartApp.business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.business\obj\Debug\net8.0\FlipkartApp.business.AssemblyInfoInputs.cache
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.business\obj\Debug\net8.0\FlipkartApp.business.AssemblyInfo.cs
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.business\obj\Debug\net8.0\FlipkartApp.business.csproj.CoreCompileInputs.cache
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.business\obj\Debug\net8.0\Flipkart.D5FE55E6.Up2Date
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.business\obj\Debug\net8.0\FlipkartApp.business.dll
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.business\obj\Debug\net8.0\refint\FlipkartApp.business.dll
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.business\obj\Debug\net8.0\FlipkartApp.business.pdb
+C:\Users\91807\OneDrive\Documents\AzureDevOps\Capstone project\FlipkartApp-project\FlipkartApp\FlipkartApp.business\obj\Debug\net8.0\ref\FlipkartApp.business.dll
