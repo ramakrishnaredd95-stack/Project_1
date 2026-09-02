@@ -33,6 +33,9 @@ jobs:
 
     steps:
 
+      # --------------------------------------------------------
+      # Checkout source code
+      # --------------------------------------------------------
       - name: Checkout source code
         uses: actions/checkout@v4
 
@@ -49,14 +52,19 @@ jobs:
 
       # --------------------------------------------------------
       # Login to ACR
-      # AZURE_ACR_CREDENTIALS JSON contains:
-      # username
-      # password
-      # loginServer
+      #
+      # AZURE_ACR_CREDENTIALS JSON:
+      #
+      # {
+      #   "username": "...",
+      #   "password": "...",
+      #   "loginServer": "acregistry121.azurecr.io"
+      # }
       # --------------------------------------------------------
       - name: Login to Azure Container Registry
         env:
           ACR_CREDENTIALS: ${{ secrets.AZURE_ACR_CREDENTIALS }}
+
         run: |
           ACR_USERNAME=$(echo "$ACR_CREDENTIALS" | jq -r '.username')
           ACR_PASSWORD=$(echo "$ACR_CREDENTIALS" | jq -r '.password')
@@ -75,6 +83,7 @@ jobs:
       - name: Build Docker image
         env:
           ACR_CREDENTIALS: ${{ secrets.AZURE_ACR_CREDENTIALS }}
+
         run: |
           ACR_LOGIN_SERVER=$(echo "$ACR_CREDENTIALS" | jq -r '.loginServer')
 
@@ -89,6 +98,7 @@ jobs:
       - name: Push Docker image
         env:
           ACR_CREDENTIALS: ${{ secrets.AZURE_ACR_CREDENTIALS }}
+
         run: |
           ACR_LOGIN_SERVER=$(echo "$ACR_CREDENTIALS" | jq -r '.loginServer')
 
@@ -101,8 +111,10 @@ jobs:
       # --------------------------------------------------------
       - name: Set image output
         id: image
+
         env:
           ACR_CREDENTIALS: ${{ secrets.AZURE_ACR_CREDENTIALS }}
+
         run: |
           ACR_LOGIN_SERVER=$(echo "$ACR_CREDENTIALS" | jq -r '.loginServer')
 
@@ -119,27 +131,70 @@ jobs:
     needs: build
 
     # --------------------------------------------------------
-    # ARM_* env vars required by the azurerm Terraform provider
-    # and the azurerm backend for state storage
+    # Terraform Azure authentication
     # --------------------------------------------------------
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-      CLIENTSECRET: ${{ secrets.CLIENTSECRET }}
+      ARM_CLIENT_SECRET: ${{ secrets.CLIENTSECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
 
     steps:
 
+      # --------------------------------------------------------
+      # Checkout source code
+      # --------------------------------------------------------
       - name: Checkout source code
         uses: actions/checkout@v4
 
 
       # --------------------------------------------------------
+      # Azure Login
+      #
+      # Required here because we use Azure CLI to get ACR ID
+      # --------------------------------------------------------
+      - name: Azure Login
+        uses: azure/login@v2
+
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+
+      # --------------------------------------------------------
+      # Get ACR Resource ID
+      #
+      # This fixes:
+      #
+      # var.acr_id
+      #
+      # Terraform needs this value during plan.
+      # --------------------------------------------------------
+      - name: Get ACR ID
+        run: |
+          echo "Getting ACR Resource ID..."
+
+          ACR_ID=$(az acr show \
+            --name "$ACR_NAME" \
+            --resource-group "$RESOURCE_GROUP" \
+            --query id \
+            --output tsv)
+
+          if [ -z "$ACR_ID" ]; then
+            echo "ERROR: ACR ID could not be found."
+            exit 1
+          fi
+
+          echo "ACR ID: $ACR_ID"
+
+          echo "ACR_ID=$ACR_ID" >> "$GITHUB_ENV"
+
+
+      # --------------------------------------------------------
       # Setup Terraform
-      # ARM_* env vars handle authentication (no Azure CLI needed)
       # --------------------------------------------------------
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
+
         with:
           terraform_version: 1.12.0
 
@@ -149,26 +204,47 @@ jobs:
       # --------------------------------------------------------
       - name: Terraform Init
         working-directory: terraform
+
         run: |
           terraform init \
             -reconfigure \
-            -backend-config="resource_group_name=AZ_RSG" \
+            -backend-config="resource_group_name=$RESOURCE_GROUP" \
             -backend-config="storage_account_name=azstoragecontainer" \
             -backend-config="container_name=tfstate" \
             -backend-config="key=aks.terraform" \
             -backend-config="client_id=$ARM_CLIENT_ID" \
-            -backend-config="client_secret=$CLIENTSECRET" \
+            -backend-config="client_secret=$ARM_CLIENT_SECRET" \
             -backend-config="tenant_id=$ARM_TENANT_ID" \
             -backend-config="subscription_id=$ARM_SUBSCRIPTION_ID"
 
 
       # --------------------------------------------------------
+      # Terraform Validate
+      # --------------------------------------------------------
+      - name: Terraform Validate
+        working-directory: terraform
+
+        run: |
+          terraform validate
+
+
+      # --------------------------------------------------------
       # Terraform Plan
+      #
+      # Pass ACR ID to Terraform:
+      #
+      # var.acr_id = $ACR_ID
       # --------------------------------------------------------
       - name: Terraform Plan
         working-directory: terraform
+
         run: |
-          terraform plan -out=tfplan
+          echo "Using ACR ID:"
+          echo "$ACR_ID"
+
+          terraform plan \
+            -var="acr_id=$ACR_ID" \
+            -out=tfplan
 
 
       # --------------------------------------------------------
@@ -176,8 +252,11 @@ jobs:
       # --------------------------------------------------------
       - name: Terraform Apply
         working-directory: terraform
+
         run: |
-          terraform apply -auto-approve tfplan
+          terraform apply \
+            -auto-approve \
+            tfplan
 
 
   # ==========================================================
@@ -187,20 +266,25 @@ jobs:
     name: Deploy Application to AKS
     runs-on: ubuntu-latest
 
-    needs: [build, terraform]
+    needs:
+      - build
+      - terraform
 
     steps:
 
+      # --------------------------------------------------------
+      # Checkout source code
+      # --------------------------------------------------------
       - name: Checkout source code
         uses: actions/checkout@v4
 
 
       # --------------------------------------------------------
       # Azure Login
-      # Uses Azure subscription credentials
       # --------------------------------------------------------
       - name: Azure Login
         uses: azure/login@v2
+
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
@@ -210,6 +294,7 @@ jobs:
       # --------------------------------------------------------
       - name: Get AKS credentials
         timeout-minutes: 10
+
         run: |
           echo "Checking AKS availability..."
 
@@ -230,6 +315,7 @@ jobs:
       # --------------------------------------------------------
       - name: Wait for AKS nodes
         timeout-minutes: 10
+
         run: |
           until kubectl get nodes | grep -q Ready
           do
@@ -278,6 +364,7 @@ jobs:
       # --------------------------------------------------------
       - name: Wait for LoadBalancer IP
         timeout-minutes: 10
+
         run: |
           echo "Waiting for LoadBalancer IP..."
 
@@ -293,6 +380,7 @@ jobs:
       # Get Application URL
       # --------------------------------------------------------
       - name: Get Application URL
+
         run: |
           LB_IP=$(kubectl get svc flipkart-service \
             -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
