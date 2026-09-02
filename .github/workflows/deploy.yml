@@ -124,7 +124,7 @@ jobs:
     # --------------------------------------------------------
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      CLIENTSECRET: ${{ secrets.CLIENTSECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
 
@@ -155,7 +155,11 @@ jobs:
             -backend-config="resource_group_name=AZ_RSG" \
             -backend-config="storage_account_name=azstoragecontainer" \
             -backend-config="container_name=tfstate" \
-            -backend-config="key=aks.terraform"
+            -backend-config="key=aks.terraform" \
+            -backend-config="client_id=$ARM_CLIENT_ID" \
+            -backend-config="client_secret=$CLIENTSECRET" \
+            -backend-config="tenant_id=$ARM_TENANT_ID" \
+            -backend-config="subscription_id=$ARM_SUBSCRIPTION_ID"
 
 
       # --------------------------------------------------------

@@ -13,7 +13,6 @@ terraform {
     storage_account_name = "azstoragecontainer"
     container_name       = "tfstate"
     key                  = "aks.terraform"
-    use_cli = false
   }
 }
 
