@@ -7,7 +7,7 @@ on:
 
 env:
   IMAGE_NAME: flipkartapp
-  ACR_NAME: acregistry121
+  ACR_NAME: flipkartapp
   AKS_NAME: flipkartaks
   RESOURCE_GROUP: AZ_RSG
   IMAGE_TAG: latest
