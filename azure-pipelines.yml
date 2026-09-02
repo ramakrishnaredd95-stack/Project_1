@@ -1,106 +1,278 @@
-# Docker
-# Build a Docker image
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+name: Build and Deploy to AKS
 
-trigger: 
-- main
+on:
+  push:
+    branches:
+      - main
 
-variables:
- imageName: flipkartapp
- acrName: acregistry121 
- aksName: flipkartaks
- rgName : AZ_RSG
+env:
+  IMAGE_NAME: flipkartapp
+  ACR_NAME: acregistry121
+  AKS_NAME: flipkartaks
+  RESOURCE_GROUP: AZ_RSG
+  IMAGE_TAG: latest
 
-stages:
-- stage: Build 
-  displayName: BuildAndPush Docker Image
-  jobs:
-    - job: DockerBuild 
-      displayName: DockerBuildJob
-      pool: 
-       vmImage: ubuntu-latest
-      
-      steps:
-      - task: Docker@2
-        inputs:
-         command: 'buildAndPush'
-         containerRegistry: 'az-containerRegistry-sc'
-         repository: 'flipkartapp'
-         Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-         buildContext: '$(Build.SourcesDirectory)'
-         tags: latest
+jobs:
 
-- stage: Terraform
-  dependsOn: Build
-  jobs:
-  - job: Infra
-    pool:
-      vmImage: ubuntu-latest
+  # ==========================================================
+  # 1. BUILD & PUSH DOCKER IMAGE
+  # ==========================================================
+  build:
+    name: Build and Push Docker Image
+    runs-on: ubuntu-latest
+
+    outputs:
+      image: ${{ steps.image.outputs.image }}
+
     steps:
-    - task: TerraformInstaller@1
-      inputs:
-        terraformVersion: '1.6.0'
 
-    - task: TerraformTaskV4@4
-      displayName: Terraform Init
-      inputs:
-        provider: azurerm
-        command: init
-        backendServiceArm: SC-1
-        backendAzureRmResourceGroupName: AZ_RSG
-        backendAzureRmStorageAccountName: azstoragecontainer
-        backendAzureRmContainerName: tfstate
-        backendAzureRmKey: aks.terraform
-        commandOptions: "-reconfigure"
-        workingDirectory: terraform
+      - name: Checkout source code
+        uses: actions/checkout@v4
 
-    - task: TerraformTaskV4@4
-      inputs:
-        provider: azurerm
-        command: apply
-        commandOptions: '--auto-approve'
-        environmentServiceNameAzureRM: SC-1
-        workingDirectory: terraform
 
-- stage: Deploy
-  dependsOn: Terraform
-  jobs:
-    - job: Deploy
-      pool: 
-       vmImage: ubuntu-latest
-      steps: 
-      - task: AzureCLI@2
-        inputs:
-          azureSubscription: 'SC-1'
-          scriptType: 'bash'
-          scriptLocation: 'inlineScript'
-          inlineScript: |
-            echo "Checking AKS availability..."
-            
-                      until az aks get-credentials --resource-group $(rgName) --name $(aksName) --overwrite-existing 2>/dev/null; do
-                        echo "AKS not ready yet..."
-                        sleep 10
-                      done
-            
-                      echo "AKS connected"
-            
-                      until kubectl get nodes | grep Ready; do
-                        echo "Waiting for nodes..."
-                        sleep 10
-                      done
-            
-                      echo "Nodes ready"
-            
-                      kubectl apply -f K8s/
-                      kubectl rollout status deployment/flipkart-app
-            
-                      kubectl get pods
-                      kubectl get svc
-            
-                      while [ -z "$(kubectl get svc flipkart-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')" ]; do
-                        echo "Waiting for LoadBalancer IP..."
-                        sleep 10
-                      done
-            
-                      LB_IP=$(kubectl get svc flipkart-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-                      echo "APPLICATION URL: http://$LB_IP"
+      # --------------------------------------------------------
+      # Login to Azure
+      # AZURE_CREDENTIALS = Azure Service Principal
+      # --------------------------------------------------------
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+
+      # --------------------------------------------------------
+      # Login to ACR
+      # AZURE_ACR_CREDENTIALS JSON contains:
+      # username
+      # password
+      # loginServer
+      # --------------------------------------------------------
+      - name: Login to Azure Container Registry
+        env:
+          ACR_CREDENTIALS: ${{ secrets.AZURE_ACR_CREDENTIALS }}
+        run: |
+          ACR_USERNAME=$(echo "$ACR_CREDENTIALS" | jq -r '.username')
+          ACR_PASSWORD=$(echo "$ACR_CREDENTIALS" | jq -r '.password')
+          ACR_LOGIN_SERVER=$(echo "$ACR_CREDENTIALS" | jq -r '.loginServer')
+
+          echo "Logging in to ACR: $ACR_LOGIN_SERVER"
+
+          echo "$ACR_PASSWORD" | docker login "$ACR_LOGIN_SERVER" \
+            --username "$ACR_USERNAME" \
+            --password-stdin
+
+
+      # --------------------------------------------------------
+      # Build Docker image
+      # --------------------------------------------------------
+      - name: Build Docker image
+        env:
+          ACR_CREDENTIALS: ${{ secrets.AZURE_ACR_CREDENTIALS }}
+        run: |
+          ACR_LOGIN_SERVER=$(echo "$ACR_CREDENTIALS" | jq -r '.loginServer')
+
+          docker build \
+            -t "$ACR_LOGIN_SERVER/$IMAGE_NAME:$IMAGE_TAG" \
+            .
+
+
+      # --------------------------------------------------------
+      # Push Docker image
+      # --------------------------------------------------------
+      - name: Push Docker image
+        env:
+          ACR_CREDENTIALS: ${{ secrets.AZURE_ACR_CREDENTIALS }}
+        run: |
+          ACR_LOGIN_SERVER=$(echo "$ACR_CREDENTIALS" | jq -r '.loginServer')
+
+          docker push \
+            "$ACR_LOGIN_SERVER/$IMAGE_NAME:$IMAGE_TAG"
+
+
+      # --------------------------------------------------------
+      # Set image output
+      # --------------------------------------------------------
+      - name: Set image output
+        id: image
+        env:
+          ACR_CREDENTIALS: ${{ secrets.AZURE_ACR_CREDENTIALS }}
+        run: |
+          ACR_LOGIN_SERVER=$(echo "$ACR_CREDENTIALS" | jq -r '.loginServer')
+
+          echo "image=$ACR_LOGIN_SERVER/$IMAGE_NAME:$IMAGE_TAG" >> "$GITHUB_OUTPUT"
+
+
+  # ==========================================================
+  # 2. TERRAFORM
+  # ==========================================================
+  terraform:
+    name: Terraform Infrastructure
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+
+      # --------------------------------------------------------
+      # Azure Login
+      # Uses Azure subscription credentials
+      # --------------------------------------------------------
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+
+      # --------------------------------------------------------
+      # Setup Terraform
+      # --------------------------------------------------------
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.0
+
+
+      # --------------------------------------------------------
+      # Terraform Init
+      # --------------------------------------------------------
+      - name: Terraform Init
+        working-directory: terraform
+        run: |
+          terraform init \
+            -reconfigure \
+            -backend-config="resource_group_name=AZ_RSG" \
+            -backend-config="storage_account_name=azstoragecontainer" \
+            -backend-config="container_name=tfstate" \
+            -backend-config="key=aks.terraform"
+
+
+      # --------------------------------------------------------
+      # Terraform Apply
+      # --------------------------------------------------------
+      - name: Terraform Apply
+        working-directory: terraform
+        run: |
+          terraform apply -auto-approve
+
+
+  # ==========================================================
+  # 3. DEPLOY TO AKS
+  # ==========================================================
+  deploy:
+    name: Deploy Application to AKS
+    runs-on: ubuntu-latest
+
+    needs: terraform
+
+    steps:
+
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+
+      # --------------------------------------------------------
+      # Azure Login
+      # Uses Azure subscription credentials
+      # --------------------------------------------------------
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+
+      # --------------------------------------------------------
+      # Get AKS credentials
+      # --------------------------------------------------------
+      - name: Get AKS credentials
+        run: |
+          echo "Checking AKS availability..."
+
+          until az aks get-credentials \
+            --resource-group "$RESOURCE_GROUP" \
+            --name "$AKS_NAME" \
+            --overwrite-existing 2>/dev/null
+          do
+            echo "AKS not ready yet..."
+            sleep 10
+          done
+
+          echo "AKS connected"
+
+
+      # --------------------------------------------------------
+      # Wait for AKS nodes
+      # --------------------------------------------------------
+      - name: Wait for AKS nodes
+        run: |
+          until kubectl get nodes | grep -q Ready
+          do
+            echo "Waiting for nodes..."
+            sleep 10
+          done
+
+          echo "Nodes ready"
+
+
+      # --------------------------------------------------------
+      # Deploy Kubernetes manifests
+      # --------------------------------------------------------
+      - name: Deploy Kubernetes manifests
+        run: |
+          kubectl apply -f K8s/
+
+
+      # --------------------------------------------------------
+      # Wait for deployment rollout
+      # --------------------------------------------------------
+      - name: Wait for deployment rollout
+        run: |
+          kubectl rollout status deployment/flipkart-app \
+            --timeout=5m
+
+
+      # --------------------------------------------------------
+      # Get pods
+      # --------------------------------------------------------
+      - name: Get pods
+        run: |
+          kubectl get pods
+
+
+      # --------------------------------------------------------
+      # Get services
+      # --------------------------------------------------------
+      - name: Get services
+        run: |
+          kubectl get svc
+
+
+      # --------------------------------------------------------
+      # Wait for LoadBalancer IP
+      # --------------------------------------------------------
+      - name: Wait for LoadBalancer IP
+        run: |
+          echo "Waiting for LoadBalancer IP..."
+
+          until [ -n "$(kubectl get svc flipkart-service \
+            -o jsonpath='{.status.loadBalancer.ingress[0].ip}')" ]
+          do
+            echo "LoadBalancer IP not available yet..."
+            sleep 10
+          done
+
+
+      # --------------------------------------------------------
+      # Get Application URL
+      # --------------------------------------------------------
+      - name: Get Application URL
+        run: |
+          LB_IP=$(kubectl get svc flipkart-service \
+            -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+
+          echo "======================================"
+          echo "APPLICATION URL: http://$LB_IP"
+          echo "======================================"
